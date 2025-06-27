@@ -9,4 +9,9 @@ pp.create_line_from_parameters(net, from_bus=bus1, to_bus=bus2,
                                length_km=0.1, r_ohm_per_km=0.64,
                                x_ohm_per_km=0.08, c_nf_per_km=0, max_i_ka=0.1)
 pp.runpp(net)
-print(net.res_bus)
+
+# Spannung an allen Knoten
+print(net.res_bus[["vm_pu", "va_degree"]])
+
+# Leistungsflüsse auf Leitungen
+print(net.res_line[["p_from_mw", "q_from_mvar"]])
